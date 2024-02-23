@@ -1,8 +1,3 @@
-local IMAGE_PAR_BATCH = 10000 --nombre d'image que contien un fichier d'image
-local TAILLE_IMAGE_X = 32     --nombre de pixel X de l'image
-local TAILLE_IMAGE_Y = 32     --nombre de pixel Y de l'image
-local COLOR_SIZE = 1          --nombre de byte nessessaire par couleur d'un pixel
-
 
 
 function GetImages(fileName)
@@ -13,7 +8,7 @@ function GetImages(fileName)
         return nil
     end
 
-    local nbdata = TAILLE_IMAGE_X * TAILLE_IMAGE_Y * COLOR_SIZE * 3
+    local nbdata = NB_VALEUR
     local images = {}
     images["nbimage"] = IMAGE_PAR_BATCH
 
