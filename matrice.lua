@@ -1,6 +1,7 @@
 function MatriceCreateLigneNull(nbligne)
     local ligne = {}
     ligne["taille"] = nbligne;
+    ligne["type"] = "Ligne"
     for i = 1, nbligne
     do
         ligne[i] = 0
@@ -12,6 +13,7 @@ end
 function MatriceCreateNull(nbligne, nbcolone)
     local matrice = {}
     matrice["taille"] = { nbcolone = nbcolone, nbligne = nbligne }
+    matrice["type"] = "Matrice"
     for i = 1, nbligne
     do
         matrice[i] = {}
@@ -27,6 +29,7 @@ end
 function MatriceCreateRandom(nbligne, nbcolone)
     local matrice = {}
     matrice["taille"] = { nbcolone = nbcolone, nbligne = nbligne }
+    matrice["type"] = "Matrice"
     for i = 1, nbligne
     do
         matrice[i] = {}
@@ -68,7 +71,7 @@ function MatriceMutation(matrice, mutationPower)
 end
 
 function MatriceOperation(ligneInput, matrice)
-    local nbligne = ligneInput.taille.nbligne;
+    local nbligne = ligneInput.taille;
     local nbIteration = nbligne
 
     local max = 0
@@ -78,7 +81,7 @@ function MatriceOperation(ligneInput, matrice)
         local valeur = 0
 
         for k = 1, nbIteration do
-            valeur = valeur + ligneInput[k] * matrice[k][i];
+            valeur = valeur + (ligneInput[k] * matrice[k][i]);
         end
 
         if valeur > max then

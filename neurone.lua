@@ -1,3 +1,6 @@
+
+require("matrice")
+
 --[[Fonction : CreateNeurone
     Description : Permet de crée un neurone de manière aléatoire]]
 function CreateNeurone(nombre_couche, taille_matrice)
@@ -23,8 +26,9 @@ local function determine_classe(input)
     local valeur = 0
 
     for i = 1, 10, 1 do
+
         if input[i] > valeur then
-            valeur = input[valeur]
+            valeur = input[i]
             class = i
         end
     end

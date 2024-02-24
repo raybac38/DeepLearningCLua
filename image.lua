@@ -20,7 +20,7 @@ function GetImages(fileName)
         local ligne = MatriceCreateLigneNull(nbdata)
 
         for index = 1, nbdata do
-            ligne[i] = file:read(1)
+            ligne[index] = string.byte(file:read(1)) / 255
         end
 
         image["data"] = ligne
