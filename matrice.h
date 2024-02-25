@@ -27,4 +27,11 @@ SquareMatrix * SquareMatrixInitRandome(unsigned taille);
 
 SquareMatrix * SquareMatrixMutate(SquareMatrix * sqm_ref, double mutation_power);
 
+Input * InputMemcopy(Input * input);
+
+void MatrixExecute(Input ** input_pointeur, SquareMatrix * sqm);
+
+char InputDetermineClasse(Input * input);
+
+
 #endif

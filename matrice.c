@@ -95,3 +95,65 @@ void InputDestroy(Input ** input)
     free(pointeur);
     input = NULL;
 }
+
+Input * InputMemcopy(Input * input)
+{
+    unsigned taille = input->taille;
+    Input * newInput = InputInit(taille);
+
+    for (unsigned index_valeur = 0; index_valeur < taille; index_valeur++)
+    {
+        newInput->valeurs[index_valeur] = input->valeurs[index_valeur];
+    }
+
+    return newInput;
+}
+
+void MatrixExecute(Input ** input_pointeur, SquareMatrix * sqm)
+{
+    Input * input = *input_pointeur;
+    unsigned taille = input->taille;
+    double * double_array_input = input->valeurs;
+
+    Input * output = InputInit(taille);
+    double * double_array_output =  output->valeurs;
+
+    for (unsigned index_colone = 0; index_colone < taille; index_colone++)
+    {
+        double * colone = sqm->valeurs[index_colone];
+
+        double valeur = 0;
+        for (unsigned index_ligne = 0; index_ligne < taille; index_ligne++)
+        {
+            valeur += double_array_input[index_ligne] * colone[index_ligne];
+        }
+        valeur = valeur / taille;
+
+        double_array_output[index_colone] = valeur;
+        
+    }
+    
+    InputDestroy(input_pointeur);
+    input_pointeur = &output;
+}
+
+char InputDetermineClasse(Input * input)
+{
+    double maximum = 0;
+    char index_max = 0;
+
+    double * array_double = input->valeurs;
+
+    for (char index = 0; index < 10; index++)
+    {
+        double valeur = array_double[index];
+
+        if(valeur > maximum)
+        {
+            maximum = valeur;
+            index_max = index;
+        }
+    }
+    
+    return index_max;
+}

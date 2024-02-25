@@ -6,7 +6,7 @@ Network * NetworkInitRandom(unsigned couche, unsigned nb_valeur)
 {
 
     Network * network = malloc(sizeof(Network));
-    network->neurone = malloc(sizeof(SquareMatrix) * couche);
+    network->neurone = malloc(sizeof(SquareMatrix *) * couche);
     network->couche = couche;
 
     for (unsigned index = 0; index < couche; index++)
@@ -21,7 +21,7 @@ Network * NetworkInit(unsigned couche, unsigned nb_valeur)
 {
 
     Network * network = malloc(sizeof(Network));
-    network->neurone = malloc(sizeof(SquareMatrix) * couche);
+    network->neurone = malloc(sizeof(SquareMatrix *) * couche);
 
     network->couche = couche;
 
@@ -40,7 +40,7 @@ Network * NetworkMutate(Network * network_ref, double mutation_power)
 {
     unsigned couche = network_ref->couche;
     Network * network = malloc(sizeof(Network));
-    network->neurone = malloc(sizeof(SquareMatrix) * couche);
+    network->neurone = malloc(sizeof(SquareMatrix *) * couche);
     network->couche = couche;
     for (unsigned index = 0; index < couche; index++)
     {
@@ -145,3 +145,4 @@ Network * NetworkLoad(char * filename)
     fclose(f);
     return network;
 }
+
