@@ -94,7 +94,7 @@ void NetworkSave(Network * network, char * filename)
         
     }
 
-    NetworkDestroy(network);
+    NetworkDestroy(&network);
     fclose(f);
 }
 

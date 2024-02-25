@@ -1,3 +1,7 @@
+
+#ifndef MATRICE_H
+#define MATRICE_H
+
 typedef struct input
 {
     unsigned taille;
@@ -22,3 +26,5 @@ void InputDestroy(Input ** input);
 SquareMatrix * SquareMatrixInitRandome(unsigned taille);
 
 SquareMatrix * SquareMatrixMutate(SquareMatrix * sqm_ref, double mutation_power);
+
+#endif
