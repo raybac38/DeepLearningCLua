@@ -11,7 +11,7 @@ const unsigned COUCHE_NEURONAL = 2;
 const unsigned TAILLE_IMAGE_X = 32;
 const unsigned TAILLE_IMAGE_Y = 32;
 
-const char * FICHIER_IMAGE = "/media/raybac38/HDD/cifar-10-binary/cifar-10-batches-bin/data_batch_1.bin";
+const char * FICHIER_IMAGE = "data_batch_1.bin";
 
 void RandomGeneration(Classement * classement, Images * bank_images);
 void MutateGeneration(Classement * classement, Images * bank_images);
