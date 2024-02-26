@@ -32,6 +32,6 @@ Input * InputMemcopy(Input * input);
 void MatrixExecute(Input ** input_pointeur, SquareMatrix * sqm);
 
 char InputDetermineClasse(Input * input);
-
+void MatrixExecuteNew(Input *input_pointeur, SquareMatrix *sqm);
 
 #endif

@@ -23,7 +23,8 @@ Images *ImageLecture(char *filename)
     for (unsigned index_image = 0; index_image < NB_IMAGE_PAR_BATCH; index_image++)
     {
         Image *img = &(images->image[index_image]);
-        img->input = InputInit(NB_VALEUR);
+        img->input = InputInit((unsigned) NB_VALEUR);
+        
         if (0 == fread(&valeur, sizeof(char), 1, f))
         {
             printf("ERROR cannot read pictures classe \n");
