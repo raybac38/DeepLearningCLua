@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g -pg
+DEBUG_CFLAGS = -Wall -Wextra -g -pg
+PERFORMANCE_CFLAGS = -O3 -Wall -Wextra -pg
 
 all: main
 
@@ -23,3 +24,9 @@ network.o: network.c network.h matrice.h
 
 clean:
 	rm -f *.o main
+
+debug: CFLAGS = $(DEBUG_CFLAGS)
+debug: all
+
+performance: CFLAGS = $(PERFORMANCE_CFLAGS)
+performance: all

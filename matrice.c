@@ -157,14 +157,16 @@ void MatrixExecuteNew(Input *input, SquareMatrix *sqm)
 
     for (unsigned index_colone = 0; index_colone < taille; index_colone++)
     {
+
         for (unsigned index_ligne = 0; index_ligne < taille; index_ligne++)
         {
-            *ptrOutput = (*ptrLigne++) * *ptrInput;
+            *ptrOutput = (*ptrLigne++) * (*ptrInput);
         }
         ptrInput++;
         ptrColone++;
+        ptrLigne = *ptrColone;
+
         (*ptrOutput++) *= inv_taille;
-        ptrLigne = ptrColone[index_colone];
     }
 
     free(input->valeurs);
