@@ -36,7 +36,7 @@ Network * NetworkInit(unsigned couche, unsigned nb_valeur)
 
 
 
-Network * NetworkMutate(Network * network_ref, double mutation_power)
+Network * NetworkMutate(Network * network_ref, float mutation_power)
 {
     unsigned couche = network_ref->couche;
     Network * network = malloc(sizeof(Network));
@@ -83,11 +83,11 @@ void NetworkSave(Network * network, char * filename)
 
         for (unsigned index_colone = 0; index_colone < taille; index_colone++)
         {
-            double * array_double = current_couche->valeurs[index_colone];
+            float * array_float = current_couche->valeurs[index_colone];
 
             for (unsigned index_ligne = 0; index_ligne < taille; index_ligne++)
             {
-                fwrite(&array_double[index_ligne], sizeof(double), 1, f);
+                fwrite(&array_float[index_ligne], sizeof(float), 1, f);
             }
             
         }
@@ -130,11 +130,11 @@ Network * NetworkLoad(char * filename)
 
         for (unsigned index_colone = 0; index_colone < taille; index_colone++)
         {
-            double * array_double = current_couche->valeurs[index_colone];
+            float * array_float = current_couche->valeurs[index_colone];
 
             for (unsigned index_ligne = 0; index_ligne < taille; index_ligne++)
             {
-                if(fread(&array_double[index_ligne], sizeof(double), 1, f) == 0)
+                if(fread(&array_float[index_ligne], sizeof(float), 1, f) == 0)
                 {
                     printf("ERREUR Lecture de donnee\n");
                     exit(EXIT_FAILURE);

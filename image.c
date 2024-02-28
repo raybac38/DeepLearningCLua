@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NB_IMAGE_PAR_BATCH 10000
+#define NB_IMAGE_PAR_BATCH 100
 #define NB_VALEUR 3072
 
 Images *ImageLecture(char *filename)
@@ -36,7 +36,7 @@ Images *ImageLecture(char *filename)
         }
         for (unsigned index_data = 0; index_data < NB_VALEUR; index_data++)
         {
-            double *valeurs = img->input->valeurs;
+            float *valeurs = img->input->valeurs;
 
             if (0 == fread(&valeur, sizeof(char), 1, f))
             {
@@ -45,7 +45,7 @@ Images *ImageLecture(char *filename)
             }
             else
             {
-                valeurs[index_data] = (double)(valeur / 255);
+                valeurs[index_data] = (float)(valeur / 255);
             }
         }
     }

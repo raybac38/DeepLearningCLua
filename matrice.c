@@ -8,11 +8,11 @@ SquareMatrix *SquareMatrixInit(unsigned taille)
     SquareMatrix *sqm = (SquareMatrix *)malloc(sizeof(SquareMatrix));
     sqm->taille = taille;
 
-    sqm->valeurs = malloc(sizeof(double *) * taille);
+    sqm->valeurs = malloc(sizeof(float *) * taille);
 
     for (unsigned index = 0; index < taille; index++)
     {
-        sqm->valeurs[index] = malloc(sizeof(double) * taille);
+        sqm->valeurs[index] = malloc(sizeof(float) * taille);
     }
 
     return sqm;
@@ -23,7 +23,7 @@ Input *InputInit(unsigned taille)
     
     Input *input = malloc(sizeof(Input));
     input->taille = taille;
-    input->valeurs = malloc(sizeof(double) * taille);
+    input->valeurs = malloc(sizeof(float) * taille);
     return input;
 }
 
@@ -33,33 +33,33 @@ SquareMatrix *SquareMatrixInitRandome(unsigned taille)
     SquareMatrix *sqm = (SquareMatrix *)malloc(sizeof(SquareMatrix));
     sqm->taille = taille;
 
-    sqm->valeurs = malloc(sizeof(double *) * taille);
+    sqm->valeurs = malloc(sizeof(float *) * taille);
 
     for (unsigned indexI = 0; indexI < taille; indexI++)
     {
-        sqm->valeurs[indexI] = malloc(sizeof(double) * taille);
+        sqm->valeurs[indexI] = malloc(sizeof(float) * taille);
 
         for (unsigned indexJ = 0; indexJ < taille; indexJ++)
         {
-            sqm->valeurs[indexI][indexJ] = (double)rand() / RAND_MAX;
+            sqm->valeurs[indexI][indexJ] = (float)rand() / RAND_MAX;
         }
     }
 
     return sqm;
 }
 
-SquareMatrix *SquareMatrixMutate(SquareMatrix *sqm_ref, double mutation_power)
+SquareMatrix *SquareMatrixMutate(SquareMatrix *sqm_ref, float mutation_power)
 {
     unsigned taille = sqm_ref->taille;
     SquareMatrix *sqm = SquareMatrixInit(taille);
 
-    double valeur = 0;
+    float valeur = 0;
 
     for (size_t indexI = 0; indexI < taille; indexI++)
     {
         for (size_t indexJ = 0; indexJ < taille; indexJ++)
         {
-            valeur = sqm_ref->valeurs[indexI][indexJ] + mutation_power * (double)((rand() - (RAND_MAX / 2)) / RAND_MAX);
+            valeur = sqm_ref->valeurs[indexI][indexJ] + mutation_power * (float)((rand() - (RAND_MAX / 2)) / RAND_MAX);
             if (valeur > 1)
             {
                 valeur = 1;
@@ -114,26 +114,26 @@ void MatrixExecute(Input **input_pointeur, SquareMatrix *sqm)
 {
     Input *input = *input_pointeur;
     unsigned taille = input->taille;
-    double *double_array_input = input->valeurs;
+    float *float_array_input = input->valeurs;
 
-    double inv_taille = 1 / taille;
+    float inv_taille = 1 / taille;
 
     Input *output = InputInit(taille);
 
-    double *double_array_output = output->valeurs;
+    float *float_array_output = output->valeurs;
 
     for (unsigned index_colone = 0; index_colone < taille; index_colone++)
     {
-        double *colone = sqm->valeurs[index_colone];
+        float *colone = sqm->valeurs[index_colone];
 
-        double valeur = 0;
+        float valeur = 0;
         for (unsigned index_ligne = 0; index_ligne < taille; index_ligne++)
         {
-            valeur += double_array_input[index_ligne] * colone[index_ligne];
+            valeur += float_array_input[index_ligne] * colone[index_ligne];
         }
         valeur *= inv_taille;
 
-        double_array_output[index_colone] = valeur;
+        float_array_output[index_colone] = valeur;
     }
 
     InputDestroy(input_pointeur);
@@ -145,15 +145,15 @@ void MatrixExecuteNew(Input *input, SquareMatrix *sqm)
 {
     unsigned taille = sqm->taille;
     
-    double * double_array = malloc(sizeof(double) * taille);
+    float * float_array = malloc(sizeof(float) * taille);
 
-    double inv_taille = 1 / taille;
+    float inv_taille = 1 / taille;
     //Initialisation des pointeurs
 
-    double * ptrInput = input->valeurs;
-    double * ptrOutput = double_array;
-    double ** ptrColone = sqm->valeurs;
-    double * ptrLigne = *ptrColone;
+    float * ptrInput = input->valeurs;
+    float * ptrOutput = float_array;
+    float ** ptrColone = sqm->valeurs;
+    float * ptrLigne = *ptrColone;
 
     for (unsigned index_colone = 0; index_colone < taille; index_colone++)
     {
@@ -170,20 +170,20 @@ void MatrixExecuteNew(Input *input, SquareMatrix *sqm)
     }
 
     free(input->valeurs);
-    input->valeurs = double_array;
+    input->valeurs = float_array;
 }
 
 
 char InputDetermineClasse(Input *input)
 {
-    double maximum = 0;
+    float maximum = 0;
     char index_max = 0;
 
-    double *array_double = input->valeurs;
+    float *array_float = input->valeurs;
 
     for (unsigned index = 0; index < 10; index++)
     {
-        double valeur = array_double[index];
+        float valeur = array_float[index];
 
         if (valeur > maximum)
         {

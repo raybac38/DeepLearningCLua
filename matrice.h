@@ -5,13 +5,13 @@
 typedef struct input
 {
     unsigned taille;
-    double* valeurs;
+    float* valeurs;
 }Input;
 
 typedef struct matrice
 {
     unsigned taille;
-    double **valeurs;
+    float **valeurs;
 
 }SquareMatrix;
 
@@ -25,7 +25,7 @@ void InputDestroy(Input ** input);
 
 SquareMatrix * SquareMatrixInitRandome(unsigned taille);
 
-SquareMatrix * SquareMatrixMutate(SquareMatrix * sqm_ref, double mutation_power);
+SquareMatrix * SquareMatrixMutate(SquareMatrix * sqm_ref, float mutation_power);
 
 Input * InputMemcopy(Input * input);
 

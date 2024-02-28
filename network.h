@@ -9,7 +9,7 @@ typedef struct network
 
 Network * NetworkInitRandom(unsigned couche, unsigned nb_valeur);
 
-Network * NetworkMutate(Network * network_ref, double mutation_power);
+Network * NetworkMutate(Network * network_ref, float mutation_power);
 
 void NetworkDestroy(Network ** network);
 
